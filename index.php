@@ -119,10 +119,7 @@ ABANDON ALL HOPE YE WHO ENTER
 					$fields = array(
 						'from' => $_POST["inputButton"],
 						'to' => $_POST["outputButton"],
-						// TODO: Add option to select different charsets
 						'input_files[]' => "@/" . $uploadedFilePath . ";type=" . mime_content_type($uploadedFilePath) . "; charset=UTF-8"
-						// TODO: Add option to select or upload CSS stylesheets
-						// TODO: Add option to make HTML standalone
 					);
 
 					//open connection
@@ -153,6 +150,7 @@ ABANDON ALL HOPE YE WHO ENTER
 					header('Pragma: no-cache');
 					ob_clean();
 					flush();
+
 					// Force the file to download in the user's browser
 					readfile($convertedFilePath);
 
@@ -316,8 +314,15 @@ ABANDON ALL HOPE YE WHO ENTER
 			</br>
 
 			<div align="center">
-				<input style="display: inline;white-space:nowrap;" type="file" name="userFile" id="userFile">
-				<input style="display: inline;white-space:nowrap;" type="submit" value="Convert!" name="submit">
+				<input style="display: inline;white-space:nowrap; margin: 30px 0 30px 0" type="file" name="userFile" id="userFile">
+				<input style="display: inline;white-space:nowrap; margin: 30px 0 30px 0" type="submit" value="Convert!" name="submit">
+				</br>
+				<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#advanced">Advanced Options <span class="caret"></span></button>
+				<div id="advanced" class="collapse" style="margin: 15px 0 30px 0">
+					<p><b>TODO:</b> Add option to select different charsets (currently defaults to UTF-8).<p>
+					<p><b>TODO:</b> Add option to select or upload CSS stylesheets (markdowncss.github.io?).<p>
+					<p><b>TODO:</b> Add option to make HTML standalone (check Docverter API docs).<p>
+  				</div>
 			</div>
 
 		</form>
